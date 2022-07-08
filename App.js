@@ -7,10 +7,10 @@ import "./App.css";
 function App() {
   const [userName, setUserName] = useState([])
   const [text, setText] = useState("")
-  const [pageNumber, setPageNumber] = useState(0)
-  const countryPerPage = 15
+  const [pageNumber, setPageNumber] = useState(0) //how many pages
+  const countryPerPage = 15  //how many items to display country on per page
 
-  const pagesVisited = pageNumber * countryPerPage
+  const pagesVisited = pageNumber * countryPerPage   //how many country eg:(4*15=60 country. )   
 
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function App() {
       setUserName(apiData);
 
 
-      console.log(userName);
+      // console.log(userName);
     }
     fetchData()
   }, [])
@@ -49,6 +49,7 @@ function App() {
           } else {
             return "";
           }
+          //eg:(60,60+15=75 gapBetweenPages=15)
         }).slice(pagesVisited, pagesVisited + countryPerPage).map((val, i) => {
           return <div key={i} >
             <h1>{val.country}</h1>
